@@ -48,7 +48,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private boolean downPressed;
 	private boolean wPressed;
 	private boolean sPressed;
-
+	private boolean spPressed;
 	/** The ball: position, diameter */
 	private int ballX = 200;
 	private int ballY = 200;
@@ -286,6 +286,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				wPressed = true;
 			} else if (e.getKeyCode() == KeyEvent.VK_S) {
 				sPressed = true;
+			}else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				spPressed = true;
 			}
 		} else if (gameOver && e.getKeyCode() == KeyEvent.VK_SPACE) {
 			gameOver = false;
