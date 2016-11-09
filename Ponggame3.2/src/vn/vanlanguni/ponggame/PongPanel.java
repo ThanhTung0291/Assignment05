@@ -210,7 +210,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// Draw game title and start message
 			g.setColor(Color.cyan);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
-			g.drawString("Pong Game", 130, 100);
+			g.drawString("Pong Game", 150, 100);////
 
 			// FIXME Wellcome message below show smaller than game title
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
@@ -236,9 +236,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// draw the scores
 			g.setColor(Color.blue);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
-			g.drawString(String.valueOf(playerOneScore), 100, 100); // Player 1
+			g.drawString(String.valueOf(playerOneScore), 120, 100); // Player 1
 																	// score
-			g.drawString(String.valueOf(playerTwoScore), 400, 100); // Player 2
+			g.drawString(String.valueOf(playerTwoScore), 360, 100); // Player 2
 																	// score
 
 			// draw the ball
@@ -256,22 +256,22 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// TODO Set Blue color
 			g.setColor(Color.blue);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
-			g.drawString(String.valueOf(playerOneScore), 100, 100);
-			g.drawString(String.valueOf(playerTwoScore), 400, 100);
+			g.drawString(String.valueOf(playerOneScore), 120, 100);
+			g.drawString(String.valueOf(playerTwoScore), 360, 100);
 
 			// Draw the winner name
 			g.setColor(Color.cyan);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
-				g.drawString("Player 1 Wins!", 165, 200);
+				g.drawString("Player 1 Wins!", 130, 200);
 			} else {
-				g.drawString("Player 2 Wins!", 165, 200);
+				g.drawString("Player 2 Wins!", 130, 200);
 			}
 
 			// Draw Restart message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 			// TODO Draw a restart message
-			g.drawString("Press 'space' to restart game", 145, 400);
+			g.drawString("Press 'space' to restart game", 125, 400);
 		}
 	}
 
