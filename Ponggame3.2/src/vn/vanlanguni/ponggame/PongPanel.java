@@ -128,8 +128,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int nextBallLeft = ballX + ballDeltaX;
 			int nextBallRight = ballX + diameter + ballDeltaX;
 			// FIXME Something not quite right here
-			int nextBallTop = ballY+ballDeltaY;
-			int nextBallBottom = ballY + diameter+ballDeltaY;
+			int nextBallTop = ballY + ballDeltaY;
+			int nextBallBottom = ballY + diameter + ballDeltaY;
 
 			// Player 1's paddle position
 			int playerOneRight = playerOneX + playerOneWidth;
@@ -280,7 +280,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if (showTitleScreen) {
-			if (e.getKeyChar() == 'p') {
+			if (e.getKeyCode() == KeyEvent.VK_P) {
 				showTitleScreen = false;
 				playing = true;
 			}
@@ -293,7 +293,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				wPressed = true;
 			} else if (e.getKeyCode() == KeyEvent.VK_S) {
 				sPressed = true;
-			}else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 				spPressed = true;
 			}
 		} else if (gameOver && e.getKeyCode() == KeyEvent.VK_SPACE) {
