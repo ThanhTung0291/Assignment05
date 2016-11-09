@@ -128,8 +128,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int nextBallLeft = ballX + ballDeltaX;
 			int nextBallRight = ballX + diameter + ballDeltaX;
 			// FIXME Something not quite right here
-			int nextBallTop = ballY+ballDeltaX;
-			int nextBallBottom = ballY + diameter+ballDeltaX;
+			int nextBallTop = ballY+ballDeltaY;
+			int nextBallBottom = ballY + diameter+ballDeltaY;
 
 			// Player 1's paddle position
 			int playerOneRight = playerOneX + playerOneWidth;
@@ -208,6 +208,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			/* Show welcome screen */
 
 			// Draw game title and start message
+			g.setColor(Color.cyan);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			g.drawString("Pong Game", 130, 100);
 
@@ -259,7 +260,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.drawString(String.valueOf(playerTwoScore), 400, 100);
 
 			// Draw the winner name
-			g.setColor(Color.darkGray);
+			g.setColor(Color.cyan);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
 				g.drawString("Player 1 Wins!", 165, 200);
