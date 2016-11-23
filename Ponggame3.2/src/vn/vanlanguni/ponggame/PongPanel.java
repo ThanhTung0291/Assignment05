@@ -234,20 +234,20 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			}
 			if(ballDeltaX ==3){
 				if (nextBallRight <= playerOneTop +15 || nextBallRight >= playerOneBottom -15){
-					ballDeltaY = 5;
-				}else if(nextBallRight < playerOneTop +30){
-				    ballDeltaY = 3;
-				}else if (nextBallRight < playerOneTop+45){
 					ballDeltaY = 4;
+				}else if(nextBallRight < playerOneTop +30){
+				    ballDeltaY = 2;
+				}else if (nextBallRight < playerOneTop+45){
+					ballDeltaY = 3;
 				
 				}
 			}else if (ballDeltaX==-3){
 				if (nextBallRight <= playerOneTop +15 || nextBallRight >= playerOneBottom -15){
-					ballDeltaY = -5;
-				}else if(nextBallRight < playerOneTop +30){
-				    ballDeltaY = -3;
-				}else if (nextBallRight < playerOneTop+45){
 					ballDeltaY = -4;
+				}else if(nextBallRight < playerOneTop +30){
+				    ballDeltaY = -2;
+				}else if (nextBallRight < playerOneTop+45){
+					ballDeltaY = -3;
 				
 				}
 			}
