@@ -312,7 +312,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if (showTitleScreen) {
 
 			/* Show welcome screen */
-			backgroundscreen = new ImageIcon("D:/TungT153220/Ponggame3.2/11.jpg.");
+			backgroundscreen = new ImageIcon("hinh/11.jpg.");
 			g.drawImage(backgroundscreen.getImage(), 0, 0,500, 500, null);
 	
 			// Draw game title and start message
@@ -325,7 +325,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (playing) {
 
 			/* Game is playing */
-			Backgroundsplay = new ImageIcon("D:/TungT153220/Ponggame3.2/3.jpg.");
+			Backgroundsplay = new ImageIcon("hinh/3.jpg.");
 			g.drawImage(Backgroundsplay.getImage(), 0, 0,500, 500, null);
 			// set the coordinate limit
 			int playerOneRight = playerOneX + playerOneWidth;
@@ -371,7 +371,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (gameOver) {
 
 			/* Show End game screen with winner name and score */
-			 backgroundsover = new ImageIcon("D:/TungT153220/Ponggame3.2/13.jpg.");
+			 backgroundsover = new ImageIcon("hinh/13.jpg.");
 				g.drawImage(backgroundsover.getImage(), 0, 0,500, 500, null);
 			// Draw scores
 			// TODO Set Blue color
