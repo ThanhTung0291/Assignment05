@@ -19,12 +19,20 @@ package vn.vanlanguni.ponggame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.Rectangle2D;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -37,7 +45,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = -1097341635155021546L;
 
 	private boolean showTitleScreen = true;
-	private boolean playing;
+	public boolean playing;
 	private boolean gameOver;
 
 	/** Background. */
@@ -74,6 +82,25 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** Player score, show on upper left and right. */
 	private int playerOneScore;
 	private int playerTwoScore;
+	/** Player Name */
+	private String playerOneName = "";
+	private String playerTwoName = "";
+
+	// Call Setting Dialog
+	private PongPanel_Start dialogStart = new PongPanel_Start();
+	private Settings settingFunction = new Settings();
+	private JButton btnStart = new JButton("START");
+
+	private Font myFont = new Font(Font.MONOSPACED, Font.BOLD, 15);
+	private Font nameFont = new Font(Font.MONOSPACED, Font.BOLD, 20);
+	private Font winFont = new Font(Font.DIALOG, Font.BOLD, 35);
+
+	// Draw Rectangle to set center name
+	private Rectangle rect1 = new Rectangle(30, 30, 200, 30);
+	private Rectangle rect2 = new Rectangle(270, 30, 200, 30);
+	private Rectangle rectWinner = new Rectangle(95, 180, 320, 100);
+
+	// private ImageIcon imPlay = new ImageIcon("../Images/play.png");
 
 	/** Construct a PongPanel. */
 	public PongPanel() {
@@ -82,10 +109,46 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		// listen to key presses
 		setFocusable(true);
 		addKeyListener(this);
+		this.setLayout(null);
 
 		// call step() 60 fps
-		Timer timer = new Timer(1000 / 60, this);
+		Timer timer = new Timer(600 / 60, this);
 		timer.start();
+		
+		
+
+		// Add Button Start
+		// ----------------------------------------------------------------------
+		this.add(btnStart);
+		btnStart.setBounds(200, 240, 100, 50);
+		btnStart.setFont(myFont);
+		btnStart.setBackground(Color.BLACK);
+		btnStart.setForeground(Color.WHITE);
+		btnStart.setContentAreaFilled(false);
+		btnStart.setOpaque(true);
+		btnStart.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				showTitleScreen = false;
+				dialogStart.setLocationRelativeTo(PongPanel.this);
+				dialogStart.pack();
+				dialogStart.setVisible(true);
+				dialogStart.txtPlayer1.setFocusable(true);
+				if (dialogStart.dialogResult != MyDialogResult.YES) {
+					showTitleScreen = true;
+					playing = false;
+				} else {
+					btnStart.setVisible(false);
+					showTitleScreen = false;
+					playing = true;
+				}
+
+			}
+		});
+		// -------------------------------------------------------------------------------------------------
+
 	}
 
 	/** Implement actionPerformed */
@@ -212,9 +275,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			g.drawString("Pong Game", 150, 100);////
 
-			// FIXME Wellcome message below show smaller than game title
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
-			g.drawString("Press 'P' to play.", 175, 400);
+			// FIXME Removed Mesage: "Press P to play!"
+
 		} else if (playing) {
 
 			/* Game is playing */
@@ -231,7 +293,19 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// draw "goal lines" on each side
 			g.drawLine(playerOneRight, 0, playerOneRight, getHeight());
-			g.drawLine(playerTwoLeft-1, 0, playerTwoLeft-1, getHeight());
+			g.drawLine(playerTwoLeft - 1, 0, playerTwoLeft - 1, getHeight());
+
+			// Draw the Player's Name
+			g.setColor(Color.gray);
+			g.drawRect(30, 30, 200, 30); // draw frame for Player's name
+			g.drawRect(270, 30, 200, 30); // draw frame for Player's name
+			//
+			g.setColor(Color.lightGray);
+			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
+			centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
+																	// name
+			centerString(g, rect2, dialogStart.sPlayer2, nameFont); // Player02
+																	// name
 
 			// draw the scores
 			g.setColor(Color.blue);
@@ -259,19 +333,32 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.drawString(String.valueOf(playerOneScore), 120, 100);
 			g.drawString(String.valueOf(playerTwoScore), 360, 100);
 
+			// Draw the Player's Name
+			g.setColor(Color.gray);
+			g.drawRect(30, 30, 200, 30); // draw frame for Player's name
+			g.drawRect(270, 30, 200, 30); // draw frame for Player's name
+			//
+			g.setColor(Color.lightGray);
+			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
+			centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
+																	// name
+			centerString(g, rect2, dialogStart.sPlayer2, nameFont); // Player02
+																	// name
+
 			// Draw the winner name
 			g.setColor(Color.cyan);
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
+			g.drawRect(95, 180, 320, 100);
+//			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
-				g.drawString("Player 1 Wins!", 130, 200);
+				centerString(g, rectWinner, dialogStart.sPlayer1 + " win!", winFont);
 			} else {
-				g.drawString("Player 2 Wins!", 130, 200);
+				centerString(g, rectWinner, dialogStart.sPlayer2 + " win!", winFont);
 			}
 
 			// Draw Restart message
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 			// TODO Draw a restart message
-			g.drawString("Press 'space' to restart game", 125, 400);
+			g.drawString("Press 'space' to restart game!", 125, 400);
 		}
 	}
 
@@ -279,12 +366,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		if (showTitleScreen) {
-			if (e.getKeyCode() == KeyEvent.VK_P) {
-				showTitleScreen = false;
-				playing = true;
-			}
-		} else if (playing) {
+		// Removed function: "Press P to Play!" - by Thuan Nguyen
+		if (playing) {
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
 				upPressed = true;
 			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -305,6 +388,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			ballY = 240;
 			playerOneScore = 0;
 			playerTwoScore = 0;
+			btnStart.setVisible(true);
 		}
 	}
 
@@ -318,6 +402,23 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_S) {
 			sPressed = false;
 		}
+	}
+
+	// Draw Player's name always center
+	public void centerString(Graphics g, Rectangle rect, String sName, Font font) {
+		FontRenderContext frc = new FontRenderContext(null, true, true);
+
+		Rectangle2D r2D = font.getStringBounds(sName, frc);
+		int rWidth = (int) Math.round(r2D.getWidth());
+		int rHeight = (int) Math.round(r2D.getHeight());
+		int rX = (int) Math.round(r2D.getX());
+		int rY = (int) Math.round(r2D.getY());
+
+		int a = (rect.width / 2) - (rWidth / 2) - rX;
+		int b = (rect.height / 2) - (rHeight / 2) - rY;
+
+		g.setFont(font);
+		g.drawString(sName, rect.x + a, rect.y + b);
 	}
 
 }
