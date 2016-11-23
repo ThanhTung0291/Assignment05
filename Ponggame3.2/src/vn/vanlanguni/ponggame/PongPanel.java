@@ -211,6 +211,46 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallTop < 0 || nextBallBottom > getHeight()) {
 				ballDeltaY *= -1;
 			}
+			if(ballDeltaY ==3){
+				if (nextBallLeft <= playerOneTop +15 || nextBallLeft >= playerOneBottom -15){
+					ballDeltaY = 4;
+				}else if(nextBallLeft < playerOneTop +30){
+				    ballDeltaY = 2;
+				}else if (nextBallLeft < playerOneTop+45){
+					ballDeltaY = 3;
+				
+				}
+				
+			}else if (ballDeltaY ==-3){
+				if (nextBallLeft <= playerOneTop +15 || nextBallLeft >= playerOneBottom -15){
+					ballDeltaY = -4;
+				}else if(nextBallLeft < playerOneTop +30){
+				    ballDeltaY = -2;
+				}else if (nextBallLeft < playerOneTop+45){
+					ballDeltaY = -3;
+				
+				}
+				
+			}
+			if(ballDeltaX ==3){
+				if (nextBallRight <= playerOneTop +15 || nextBallRight >= playerOneBottom -15){
+					ballDeltaY = 5;
+				}else if(nextBallRight < playerOneTop +30){
+				    ballDeltaY = 3;
+				}else if (nextBallRight < playerOneTop+45){
+					ballDeltaY = 4;
+				
+				}
+			}else if (ballDeltaX==-3){
+				if (nextBallRight <= playerOneTop +15 || nextBallRight >= playerOneBottom -15){
+					ballDeltaY = -5;
+				}else if(nextBallRight < playerOneTop +30){
+				    ballDeltaY = -3;
+				}else if (nextBallRight < playerOneTop+45){
+					ballDeltaY = -4;
+				
+				}
+			}
 
 			// will the ball go off the left side?
 			if (nextBallLeft < playerOneRight) {
