@@ -50,6 +50,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 	/** Background. */
 	private Color backgroundColor = Color.BLACK;
+	ImageIcon backgroundscreen;
+	ImageIcon Backgroundsplay;
+	ImageIcon backgroundsover;
 
 	/** State on the control keys. */
 	private boolean upPressed;
@@ -269,7 +272,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if (showTitleScreen) {
 
 			/* Show welcome screen */
-
+			backgroundscreen = new ImageIcon("D:/TungT153220/Ponggame3.2/11.jpg.");
+			g.drawImage(backgroundscreen.getImage(), 0, 0,500, 500, null);
+	
 			// Draw game title and start message
 			g.setColor(Color.cyan);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
@@ -280,7 +285,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (playing) {
 
 			/* Game is playing */
-
+			Backgroundsplay = new ImageIcon("D:/TungT153220/Ponggame3.2/3.jpg.");
+			g.drawImage(Backgroundsplay.getImage(), 0, 0,500, 500, null);
 			// set the coordinate limit
 			int playerOneRight = playerOneX + playerOneWidth;
 			int playerTwoLeft = playerTwoX;
@@ -325,7 +331,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (gameOver) {
 
 			/* Show End game screen with winner name and score */
-
+			 backgroundsover = new ImageIcon("D:/TungT153220/Ponggame3.2/13.jpg.");
+				g.drawImage(backgroundsover.getImage(), 0, 0,500, 500, null);
 			// Draw scores
 			// TODO Set Blue color
 			g.setColor(Color.blue);
@@ -347,7 +354,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// Draw the winner name
 			g.setColor(Color.cyan);
-			g.drawRect(95, 180, 320, 100);
+			//g.drawRect(95, 180, 320, 100);
 //			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
 				centerString(g, rectWinner, dialogStart.sPlayer1 + " win!", winFont);
