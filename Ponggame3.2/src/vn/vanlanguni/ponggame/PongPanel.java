@@ -66,6 +66,15 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int diameter = 20;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
+	
+	/** Ball Images */
+	ImageIcon imgBall01 = new ImageIcon("Ball/Ball01.png");
+	ImageIcon imgBall02 = new ImageIcon("Ball/Ball02.png");
+	ImageIcon imgBall03 = new ImageIcon("Ball/Ball03.png");
+	ImageIcon imgBall04 = new ImageIcon("Ball/Ball04.png");
+	ImageIcon imgBall05 = new ImageIcon("Ball/Ball05.png");
+	ImageIcon imgBall06 = new ImageIcon("Ball/Ball06.png");
+	private int ballNumber = 1;
 
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
@@ -362,8 +371,20 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 																	// score
 
 			// draw the ball
-			g.setColor(Color.RED);
-			g.fillOval(ballX, ballY, diameter, diameter);
+			ballNumber = dialogStart.BallNum;
+			if(ballNumber==1){
+				g.drawImage(imgBall01.getImage(), ballX, ballY, diameter, diameter, null);
+				}else if (ballNumber==2){
+					g.drawImage(imgBall02.getImage(), ballX, ballY, diameter, diameter, null);
+					}else if (ballNumber==3){
+						g.drawImage(imgBall03.getImage(), ballX, ballY, diameter, diameter, null);
+						}else if (ballNumber==4){
+							g.drawImage(imgBall04.getImage(), ballX, ballY, diameter, diameter, null);
+							}else if (ballNumber==5){
+								g.drawImage(imgBall05.getImage(), ballX, ballY, diameter, diameter, null);
+								}else if (ballNumber==6){
+									g.drawImage(imgBall06.getImage(), ballX, ballY, diameter, diameter, null);
+						}
 
 			// draw the paddles
 			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
