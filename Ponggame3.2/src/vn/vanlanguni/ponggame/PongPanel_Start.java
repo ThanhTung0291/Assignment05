@@ -67,32 +67,32 @@ public class PongPanel_Start extends JDialog{
 		getContentPane().add(txtPlayer2);
 		
 		txtPlayer1.setFont(new Font(Font.DIALOG_INPUT, Font.CENTER_BASELINE, 12));
-		txtPlayer1.setBounds(30, 65, 100, 20);
+		txtPlayer1.setBounds(80, 65, 100, 20);
 		txtPlayer2.setFont(new Font(Font.DIALOG_INPUT, Font.CENTER_BASELINE, 12));
-		txtPlayer2.setBounds(30, 115, 100, 20);
+		txtPlayer2.setBounds(80, 115, 100, 20);
 
 		JLabel lblInputName = new JLabel("INPUT PLAYER'S NAME:");
 		lblInputName.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 17));
 		lblInputName.setForeground(Color.blue);
-		lblInputName.setBounds(10, 0, 200, 25);
+		lblInputName.setBounds(30, 0, 200, 25);
 		getContentPane().add(lblInputName);
 
 		JLabel lblPlayer01 = new JLabel("Player 01:");
 		lblPlayer01.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
 		lblPlayer01.setForeground(Color.BLUE);
-		lblPlayer01.setBounds(30, 35, 200, 25);
+		lblPlayer01.setBounds(95, 35, 200, 25);
 		getContentPane().add(lblPlayer01);
 
 		JLabel lblPlayer02 = new JLabel("Player 02:");
 		lblPlayer02.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
 		lblPlayer02.setForeground(Color.BLUE);
-		lblPlayer02.setBounds(30, 90, 200, 25);
+		lblPlayer02.setBounds(95, 90, 200, 25);
 		getContentPane().add(lblPlayer02);
 
 		JLabel lblChooseBall = new JLabel("CHOOSE BALL:");
 		lblChooseBall.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 17));
 		lblChooseBall.setForeground(Color.blue);
-		lblChooseBall.setBounds(10, 145, 200, 25);
+		lblChooseBall.setBounds(75, 145, 200, 25);
 		getContentPane().add(lblChooseBall);
 
 		JButton btnBall01 = new JButton(imgBall01);

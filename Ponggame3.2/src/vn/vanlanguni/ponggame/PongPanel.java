@@ -143,7 +143,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				showTitleScreen = false;
+				showTitleScreen = true;
 				dialogStart.setLocationRelativeTo(PongPanel.this);
 				dialogStart.pack();
 				dialogStart.setVisible(true);
@@ -341,21 +341,21 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			int playerTwoLeft = playerTwoX;
 
 			// draw dashed line down center
-			for (int lineY = 0; lineY < getHeight(); lineY += 50) {
-				g.setColor(Color.green);
-				g.drawLine(250, lineY, 250, lineY + 25);
-			}
+			//for (int lineY = 0; lineY < getHeight(); lineY += 50) {
+				//g.setColor(Color.green);
+				//g.drawLine(250, lineY, 250, lineY + 25);
+			//}
 
 			// draw "goal lines" on each side
-			g.drawLine(playerOneRight, 0, playerOneRight, getHeight());
-			g.drawLine(playerTwoLeft - 1, 0, playerTwoLeft - 1, getHeight());
+			//g.drawLine(playerOneRight, 0, playerOneRight, getHeight());
+			//g.drawLine(playerTwoLeft - 1, 0, playerTwoLeft - 1, getHeight());
 
 			// Draw the Player's Name
-			g.setColor(Color.gray);
-			g.drawRect(30, 30, 200, 30); // draw frame for Player's name
-			g.drawRect(270, 30, 200, 30); // draw frame for Player's name
+			//g.setColor(Color.gray);
+			//g.drawRect(30, 30, 200, 30); // draw frame for Player's name
+			//g.drawRect(270, 30, 200, 30); // draw frame for Player's name
 			//
-			g.setColor(Color.lightGray);
+			g.setColor(Color.red);
 			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
 			centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
 																	// name
@@ -402,11 +402,11 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			g.drawString(String.valueOf(playerTwoScore), 360, 100);
 
 			// Draw the Player's Name
-			g.setColor(Color.gray);
-			g.drawRect(30, 30, 200, 30); // draw frame for Player's name
-			g.drawRect(270, 30, 200, 30); // draw frame for Player's name
+			//g.setColor(Color.gray);
+			//g.drawRect(30, 30, 200, 30); // draw frame for Player's name
+			//g.drawRect(270, 30, 200, 30); // draw frame for Player's name
 			//
-			g.setColor(Color.lightGray);
+			g.setColor(Color.red);
 			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
 			centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
 																	// name
@@ -414,7 +414,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 																	// name
 
 			// Draw the winner name
-			g.setColor(Color.cyan);
+			g.setColor(Color.BLACK);
 			//g.drawRect(95, 180, 320, 100);
 //			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
