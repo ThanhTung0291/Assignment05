@@ -130,7 +130,6 @@ public class PongPanel_Start extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(e.getSource() == btnBall01){
 					BallNum = 1;
 					btnBall01.setContentAreaFilled(true);
@@ -193,19 +192,16 @@ public class PongPanel_Start extends JDialog{
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				btnBall01.setBorderPainted(false);
 				btnBall02.setBorderPainted(false);
 				btnBall03.setBorderPainted(false);
@@ -215,9 +211,7 @@ public class PongPanel_Start extends JDialog{
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				if(e.getSource() == btnBall01){
-					BallNum = 1;
 					btnBall01.setBorderPainted(true);
 					btnBall02.setBorderPainted(false);
 					btnBall03.setBorderPainted(false);
@@ -225,7 +219,6 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall02){
-					BallNum = 2;
 					btnBall02.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall03.setBorderPainted(false);
@@ -233,7 +226,6 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall03){
-					BallNum = 3;
 					btnBall03.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -241,7 +233,6 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall04){
-					BallNum = 4;
 					btnBall04.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -249,7 +240,6 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall05){
-					BallNum = 5;
 					btnBall05.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -257,7 +247,6 @@ public class PongPanel_Start extends JDialog{
 					btnBall04.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall06){
-					BallNum = 6;
 					btnBall06.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -269,7 +258,6 @@ public class PongPanel_Start extends JDialog{
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 		};

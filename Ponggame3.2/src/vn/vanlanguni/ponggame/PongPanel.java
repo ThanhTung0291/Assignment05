@@ -63,7 +63,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	/** The ball: position, diameter */
 	private int ballX = 240;
 	private int ballY = 240;
-	private int diameter = 20;
+	private int diameter = 30;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
 	
@@ -372,17 +372,17 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// draw the ball
 			ballNumber = dialogStart.BallNum;
-			if(ballNumber==1){
+			if(ballNumber == 1){
 				g.drawImage(imgBall01.getImage(), ballX, ballY, diameter, diameter, null);
-				}else if (ballNumber==2){
+				}else if (ballNumber == 2){
 					g.drawImage(imgBall02.getImage(), ballX, ballY, diameter, diameter, null);
-					}else if (ballNumber==3){
+					}else if (ballNumber == 3){
 						g.drawImage(imgBall03.getImage(), ballX, ballY, diameter, diameter, null);
-						}else if (ballNumber==4){
+						}else if (ballNumber == 4){
 							g.drawImage(imgBall04.getImage(), ballX, ballY, diameter, diameter, null);
-							}else if (ballNumber==5){
+							}else if (ballNumber == 5){
 								g.drawImage(imgBall05.getImage(), ballX, ballY, diameter, diameter, null);
-								}else if (ballNumber==6){
+								}else if (ballNumber == 6){
 									g.drawImage(imgBall06.getImage(), ballX, ballY, diameter, diameter, null);
 						}
 
