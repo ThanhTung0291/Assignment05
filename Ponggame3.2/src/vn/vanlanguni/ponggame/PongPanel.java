@@ -323,8 +323,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			/* Show welcome screen */
 			backgroundscreen = new ImageIcon("hinh/11.jpg.");
 			g.drawImage(backgroundscreen.getImage(), 0, 0,500, 500, null);
-			ponggame = new ImageIcon("hinh/55.gif.");
-			g.drawImage(ponggame.getImage(), 110, 50,293, 107, null);
+			ponggame = new ImageIcon("hinh/57.png.");
+			g.drawImage(ponggame.getImage(), 70, 50,349, 81, null);
 			// Draw game title and start message
 			g.setColor(Color.cyan);
 			g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
