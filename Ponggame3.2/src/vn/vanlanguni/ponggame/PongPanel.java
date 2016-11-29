@@ -83,14 +83,17 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int ballDeltaY = 3;
 
 	/** Ball Images */
-	ImageIcon imgBall01 = new ImageIcon("Ball/Ball01.png");
-	ImageIcon imgBall02 = new ImageIcon("Ball/Ball02.png");
-	ImageIcon imgBall03 = new ImageIcon("Ball/Ball03.png");
-	ImageIcon imgBall04 = new ImageIcon("Ball/Ball04.png");
-	ImageIcon imgBall05 = new ImageIcon("Ball/Ball05.png");
-	ImageIcon imgBall06 = new ImageIcon("Ball/Ball06.png");
+	ImageIcon imgBall01 = new ImageIcon("Ball/Ball001.png");
+	ImageIcon imgBall02 = new ImageIcon("Ball/Ball002.png");
+	ImageIcon imgBall03 = new ImageIcon("Ball/Ball003.png");
+	ImageIcon imgBall04 = new ImageIcon("Ball/Ball004.png");
+	ImageIcon imgBall05 = new ImageIcon("Ball/Ball005.png");
+	ImageIcon imgBall06 = new ImageIcon("Ball/Ball006.png");
 	private int ballNumber = 1;
 
+	/** BackGround Numbers */
+	private int BGNumber = 1;
+	private int testBGNum = 0;
 	/** Player 1's paddle: position and size */
 	private int playerOneX = 0;
 	private int playerOneY = 250;
@@ -160,18 +163,21 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				btnStart.setVisible(false);
 				showTitleScreen = true;
 				dialogStart.setLocationRelativeTo(PongPanel.this);
 				dialogStart.pack();
 				dialogStart.setVisible(true);
 				dialogStart.txtPlayer1.setFocusable(true);
 				if (dialogStart.dialogResult != MyDialogResult.YES) {
+					btnStart.setVisible(true);
 					showTitleScreen = true;
 					playing = false;
 				} else {
 					btnStart.setVisible(false);
 					showTitleScreen = false;
 					playing = true;
+					
 				}
 
 			}
@@ -394,9 +400,24 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		if (showTitleScreen) {
 
 			/* Show welcome screen */
-			backgroundscreen = new ImageIcon("hinh/11.jpg.");
-			g.drawImage(backgroundscreen.getImage(), 0, 0, 500, 500, null);
-			ponggame = new ImageIcon("hinh/57.png.");
+			testBGNum = dialogStart.testBg;
+			if (testBGNum == 0) {
+				backgroundscreen = new ImageIcon("hinh/BGMain.jpg");
+			} else if (testBGNum == 1) {
+				backgroundscreen = new ImageIcon("hinh/BG01.jpg");
+			}else if (testBGNum == 2) {
+				backgroundscreen = new ImageIcon("hinh/BG02.jpg");
+			}else if (testBGNum == 3) {
+				backgroundscreen = new ImageIcon("hinh/BG03.jpg");
+			}else if (testBGNum == 4) {
+				backgroundscreen = new ImageIcon("hinh/BG04.jpg");
+			}else if (testBGNum == 5) {
+				backgroundscreen = new ImageIcon("hinh/BG05.jpg");
+			}else if (testBGNum == 6) {
+				backgroundscreen = new ImageIcon("hinh/BG06.jpg");
+			}
+				g.drawImage(backgroundscreen.getImage(), 0, 0, 500, 500, null);
+			ponggame = new ImageIcon("hinh/Name.png.");
 			g.drawImage(ponggame.getImage(), 70, 50, 349, 81, null);
 			// Draw game title and start message
 			g.setColor(Color.cyan);
@@ -408,9 +429,22 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (playing) {
 
 			/* Game is playing */
-			Backgroundsplay = new ImageIcon("hinh/3.jpg.");
+			BGNumber = dialogStart.BGNum;
+			if (BGNumber == 1) {
+				Backgroundsplay = new ImageIcon("hinh/BG01.jpg");
+			} else if (BGNumber == 2) {
+				Backgroundsplay = new ImageIcon("hinh/BG02.jpg");
+			} else if (BGNumber == 3) {
+				Backgroundsplay = new ImageIcon("hinh/BG03.jpg");
+			} else if (BGNumber == 4) {
+				Backgroundsplay = new ImageIcon("hinh/BG04.jpg");
+			} else if (BGNumber == 5) {
+				Backgroundsplay = new ImageIcon("hinh/BG05.jpg");
+			} else if (BGNumber == 6) {
+				Backgroundsplay = new ImageIcon("hinh/BG06.jpg");
+			}
 			g.drawImage(Backgroundsplay.getImage(), 0, 0, 500, 500, null);
-			// set the coordinate limit
+			// set the coordinate limits
 			int playerOneRight = playerOneX + playerOneWidth;
 			int playerTwoLeft = playerTwoX;
 
@@ -485,7 +519,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 		} else if (gameOver) {
 
 			/* Show End game screen with winner name and score */
-			backgroundsover = new ImageIcon("hinh/13.jpg.");
+			backgroundsover = new ImageIcon("hinh/BGOver.jpg.");
 			g.drawImage(backgroundsover.getImage(), 0, 0, 500, 500, null);
 			// Draw scores
 			// TODO Set Blue color

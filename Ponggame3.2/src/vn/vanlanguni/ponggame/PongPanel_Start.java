@@ -44,10 +44,12 @@ public class PongPanel_Start extends JDialog{
 	ImageIcon imgBall06 = new ImageIcon("Ball/Ball06.png");
 	// Ball Numbers
 	public int BallNum = 1;
+	// BackGround Numbers
+	public int BGNum = 1;
+	public int testBg = 0;
 	
 	@SuppressWarnings("deprecation")
 	public PongPanel_Start() {
-		
 		setPreferredSize(new Dimension(260, 400));
 		setTitle("Settings");
 		getContentPane().setLayout(null);
@@ -132,6 +134,7 @@ public class PongPanel_Start extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBall01){
 					BallNum = 1;
+					BGNum = 1;
 					btnBall01.setContentAreaFilled(true);
 					btnBall02.setContentAreaFilled(false);
 					btnBall03.setContentAreaFilled(false);
@@ -140,6 +143,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall06.setContentAreaFilled(false);
 				}else if(e.getSource() == btnBall02){
 					BallNum = 2;
+					BGNum = 2;
 					btnBall02.setContentAreaFilled(true);
 					btnBall01.setContentAreaFilled(false);
 					btnBall03.setContentAreaFilled(false);
@@ -148,6 +152,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall06.setContentAreaFilled(false);
 				}else if(e.getSource() == btnBall03){
 					BallNum = 3;
+					BGNum = 3;
 					btnBall03.setContentAreaFilled(true);
 					btnBall01.setContentAreaFilled(false);
 					btnBall02.setContentAreaFilled(false);
@@ -156,6 +161,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall06.setContentAreaFilled(false);
 				}else if(e.getSource() == btnBall04){
 					BallNum = 4;
+					BGNum = 4;
 					btnBall04.setContentAreaFilled(true);
 					btnBall01.setContentAreaFilled(false);
 					btnBall02.setContentAreaFilled(false);
@@ -164,6 +170,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall06.setContentAreaFilled(false);
 				}else if(e.getSource() == btnBall05){
 					BallNum = 5;
+					BGNum = 5;
 					btnBall05.setContentAreaFilled(true);
 					btnBall01.setContentAreaFilled(false);
 					btnBall02.setContentAreaFilled(false);
@@ -172,6 +179,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall06.setContentAreaFilled(false);
 				}else if(e.getSource() == btnBall06){
 					BallNum = 6;
+					BGNum = 6;
 					btnBall06.setContentAreaFilled(true);
 					btnBall01.setContentAreaFilled(false);
 					btnBall02.setContentAreaFilled(false);
@@ -202,6 +210,7 @@ public class PongPanel_Start extends JDialog{
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
+				testBg = 0; 
 				btnBall01.setBorderPainted(false);
 				btnBall02.setBorderPainted(false);
 				btnBall03.setBorderPainted(false);
@@ -212,6 +221,7 @@ public class PongPanel_Start extends JDialog{
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				if(e.getSource() == btnBall01){
+					testBg = 1; 
 					btnBall01.setBorderPainted(true);
 					btnBall02.setBorderPainted(false);
 					btnBall03.setBorderPainted(false);
@@ -219,6 +229,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall02){
+					testBg = 2;
 					btnBall02.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall03.setBorderPainted(false);
@@ -226,6 +237,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall03){
+					testBg = 3;
 					btnBall03.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -233,6 +245,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall04){
+					testBg = 4;
 					btnBall04.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -240,6 +253,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall05.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall05){
+					testBg = 5;
 					btnBall05.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
@@ -247,6 +261,7 @@ public class PongPanel_Start extends JDialog{
 					btnBall04.setBorderPainted(false);
 					btnBall06.setBorderPainted(false);
 				}else if(e.getSource() == btnBall06){
+					testBg = 6;
 					btnBall06.setBorderPainted(true);
 					btnBall01.setBorderPainted(false);
 					btnBall02.setBorderPainted(false);
