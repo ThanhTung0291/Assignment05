@@ -332,56 +332,64 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// move the ball
 			ballX += ballDeltaX;
 			ballY += ballDeltaY;
-		}
-		//
-		timeToDisplay -= interval;
-		timeToDisplay1 -= interval;
-		if (timeToDisplay < 0) {
-			if (showRandomMinus == false) {
-				showRandomMinus = true;
-				xRan = ThreadLocalRandom.current().nextInt(50, 450 + 1);
-				yRan = ThreadLocalRandom.current().nextInt(0, 470 + 1);
-			} else {
-				Point ballCenter = new Point(ballX + diameter / 2, ballY + diameter / 2);
-				Point ranCenter = new Point(xRan + 15, yRan + 15);
-				double distance = getPointDistance(ballCenter, ranCenter);
-				if (distance < diameter / 2 + 15) {
+			//
+			timeToDisplay -= interval;
+			timeToDisplay1 -= interval;
+			if (timeToDisplay < 0) {
+				if (showRandomMinus == false) {
+					showRandomMinus = true;
+					xRan = ThreadLocalRandom.current().nextInt(50, 450 + 1);
+					yRan = ThreadLocalRandom.current().nextInt(0, 450 + 1);
+				} else {
+					Point ballCenter = new Point(ballX + diameter / 2, ballY + diameter / 2);
+					Point ranCenter = new Point(xRan + 15, yRan + 15);
+					double distance = getPointDistance(ballCenter, ranCenter);
+					if (distance < diameter / 2 + 15) {
+						showRandomMinus = false;
+						timeToDisplay = ThreadLocalRandom.current().nextInt(5, 15 + 1) * 1000;
+						if (lastHitBall == 1) {
+							if (playerOneHeight > 40) {
+								playerOneHeight = playerOneHeight - playerOneHeight * 25 / 100;
+							}
+						} else if (lastHitBall == 2) {
+							if (playerTwoHeight > 40) {
+								playerTwoHeight = playerTwoHeight - playerTwoHeight * 25 / 100;
+							}
+						}
+					}
+				}
+				if (timeToDisplay < -5000) {
 					showRandomMinus = false;
 					timeToDisplay = ThreadLocalRandom.current().nextInt(5, 15 + 1) * 1000;
-					if (lastHitBall == 1) {
-						playerOneHeight = playerOneHeight - playerOneHeight * 25 / 100;
-					} else if (lastHitBall == 2) {
-						playerTwoHeight = playerTwoHeight - playerTwoHeight * 25 / 100;
-					}
 				}
 			}
-			if (timeToDisplay < -5000) {
-				showRandomMinus = false;
-				timeToDisplay = ThreadLocalRandom.current().nextInt(5, 15 + 1) * 1000;
-			}
-		}
-		if (timeToDisplay1 < 0) {
-			if (showRandomPlus == false) {
-				showRandomPlus = true;
-				x1Ran = ThreadLocalRandom.current().nextInt(50, 450 + 1);
-				y1Ran = ThreadLocalRandom.current().nextInt(0, 470 + 1);
-			} else {
-				Point ballCenter1 = new Point(ballX + diameter / 2, ballY + diameter / 2);
-				Point ranCenter1 = new Point(x1Ran + 15, y1Ran + 15);
-				double distance1 = getPointDistance(ballCenter1, ranCenter1);
-				if (distance1 < diameter / 2 + 15) {
+			if (timeToDisplay1 < 0) {
+				if (showRandomPlus == false) {
+					showRandomPlus = true;
+					x1Ran = ThreadLocalRandom.current().nextInt(50, 450 + 1);
+					y1Ran = ThreadLocalRandom.current().nextInt(0, 450 + 1);
+				} else {
+					Point ballCenter1 = new Point(ballX + diameter / 2, ballY + diameter / 2);
+					Point ranCenter1 = new Point(x1Ran + 15, y1Ran + 15);
+					double distance1 = getPointDistance(ballCenter1, ranCenter1);
+					if (distance1 < diameter / 2 + 15) {
+						showRandomPlus = false;
+						timeToDisplay1 = ThreadLocalRandom.current().nextInt(5, 15 + 1) * 1000;
+						if (lastHitBall == 1) {
+							if (playerOneHeight < 90) {
+								playerOneHeight = playerOneHeight + playerOneHeight * 25 / 100;
+							}
+						} else if (lastHitBall == 2) {
+							if (playerTwoHeight < 90) {
+								playerTwoHeight = playerTwoHeight + playerTwoHeight * 25 / 100;
+							}
+						}
+					}
+				}
+				if (timeToDisplay1 < -5000) {
 					showRandomPlus = false;
 					timeToDisplay1 = ThreadLocalRandom.current().nextInt(5, 15 + 1) * 1000;
-					if (lastHitBall == 1) {
-						playerOneHeight = playerOneHeight + playerOneHeight * 25 / 100;
-					} else if (lastHitBall == 2) {
-						playerTwoHeight = playerTwoHeight + playerTwoHeight * 25 / 100;
-					}
 				}
-			}
-			if (timeToDisplay1 < -5000) {
-				showRandomPlus = false;
-				timeToDisplay1 = ThreadLocalRandom.current().nextInt(5, 15 + 1) * 1000;
 			}
 		}
 		// stuff has moved, tell this JPanel to repaint itself
@@ -405,15 +413,15 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				backgroundscreen = new ImageIcon("hinh/BGMain.jpg");
 			} else if (testBGNum == 1) {
 				backgroundscreen = new ImageIcon("hinh/BG01.jpg");
-			}else if (testBGNum == 2) {
+			} else if (testBGNum == 2) {
 				backgroundscreen = new ImageIcon("hinh/BG02.jpg");
-			}else if (testBGNum == 3) {
+			} else if (testBGNum == 3) {
 				backgroundscreen = new ImageIcon("hinh/BG03.jpg");
-			}else if (testBGNum == 4) {
+			} else if (testBGNum == 4) {
 				backgroundscreen = new ImageIcon("hinh/BG04.jpg");
-			}else if (testBGNum == 5) {
+			} else if (testBGNum == 5) {
 				backgroundscreen = new ImageIcon("hinh/BG05.jpg");
-			}else if (testBGNum == 6) {
+			} else if (testBGNum == 6) {
 				backgroundscreen = new ImageIcon("hinh/BG06.jpg");
 			}
 			g.drawImage(backgroundscreen.getImage(), 0, 0, 500, 500, null);
