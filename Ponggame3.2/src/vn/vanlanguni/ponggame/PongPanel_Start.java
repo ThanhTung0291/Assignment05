@@ -28,7 +28,7 @@ public class PongPanel_Start extends JDialog{
 	public JTextField txtPlayer1 = new JTextField();
 	public JTextField txtPlayer2;
 	public String sInputName,sPlayer1,sPlayer2;
-	private Color backgroundDia = Color.LIGHT_GRAY;
+	private Color backgroundDia = Color.DARK_GRAY;
 	
 	//Xem khai bao MyDialogResult o cuoi class nay
 	public MyDialogResult dialogResult;
@@ -73,25 +73,25 @@ public class PongPanel_Start extends JDialog{
 
 		JLabel lblInputName = new JLabel("INPUT PLAYER'S NAME:");
 		lblInputName.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 17));
-		lblInputName.setForeground(Color.blue);
+		lblInputName.setForeground(Color.YELLOW);
 		lblInputName.setBounds(30, 0, 200, 25);
 		getContentPane().add(lblInputName);
 
 		JLabel lblPlayer01 = new JLabel("Player 01:");
 		lblPlayer01.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
-		lblPlayer01.setForeground(Color.BLUE);
+		lblPlayer01.setForeground(Color.LIGHT_GRAY);
 		lblPlayer01.setBounds(95, 35, 200, 25);
 		getContentPane().add(lblPlayer01);
 
 		JLabel lblPlayer02 = new JLabel("Player 02:");
 		lblPlayer02.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
-		lblPlayer02.setForeground(Color.BLUE);
+		lblPlayer02.setForeground(Color.lightGray);
 		lblPlayer02.setBounds(95, 90, 200, 25);
 		getContentPane().add(lblPlayer02);
 
 		JLabel lblChooseBall = new JLabel("CHOOSE BALL:");
 		lblChooseBall.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 17));
-		lblChooseBall.setForeground(Color.blue);
+		lblChooseBall.setForeground(Color.YELLOW);
 		lblChooseBall.setBounds(75, 145, 200, 25);
 		getContentPane().add(lblChooseBall);
 

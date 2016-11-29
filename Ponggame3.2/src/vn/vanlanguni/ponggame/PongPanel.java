@@ -76,8 +76,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private ImageIcon imgMinus = new ImageIcon("hinh/Minus.png");
 
 	/** The ball: position, diameter */
-	private int ballX = 250;
-	private int ballY = 250;
+	private int ballX = 235;
+	private int ballY = 235;
 	private int diameter = 30;
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
@@ -290,8 +290,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 						playing = false;
 						gameOver = true;
 					}
-					ballX = 250;
-					ballY = 250;
+					ballX = 235;
+					ballY = 235;
 				} else {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
@@ -312,8 +312,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 						playing = false;
 						gameOver = true;
 					}
-					ballX = 250;
-					ballY = 250;
+					ballX = 235;
+					ballY = 235;
 				} else {
 
 					// If the ball hitting the paddle, it will bounce back
@@ -421,20 +421,30 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			// }
 
 			// draw "goal lines" on each side
-			// g.drawLine(playerOneRight, 0, playerOneRight, getHeight());
-			// g.drawLine(playerTwoLeft - 1, 0, playerTwoLeft - 1, getHeight());
+			g.drawLine(playerOneRight, 0, playerOneRight, getHeight());
+			g.drawLine(playerTwoLeft - 1, 0, playerTwoLeft - 1, getHeight());
 
 			// Draw the Player's Name
-			// g.setColor(Color.gray);
+
+			// g.setColor(Color.gray); //FIX Remove RectFrame for name
 			// g.drawRect(30, 30, 200, 30); // draw frame for Player's name
 			// g.drawRect(270, 30, 200, 30); // draw frame for Player's name
 			//
 			g.setColor(Color.red);
 			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
-			centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
-																	// name
-			centerString(g, rect2, dialogStart.sPlayer2, nameFont); // Player02
-																	// name
+
+			if (dialogStart.sPlayer1.isEmpty()) {
+				centerString(g, rect1, "Player 01", nameFont);
+			} else {
+				centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
+																		// name
+			}
+			if (dialogStart.sPlayer2.isEmpty()) {
+				centerString(g, rect2, "Player 02", nameFont);
+			} else {
+				centerString(g, rect2, dialogStart.sPlayer2, nameFont); // Player02
+																		// name
+			}
 
 			// draw the scores
 			g.setColor(Color.blue);
@@ -491,19 +501,43 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			//
 			g.setColor(Color.red);
 			g.setFont(new Font(Font.MONOSPACED, Font.BOLD, 20));
-			centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
-																	// name
-			centerString(g, rect2, dialogStart.sPlayer2, nameFont); // Player02
-																	// name
 
-			// Draw the winner name
+			if (dialogStart.sPlayer1.isEmpty()) {
+				centerString(g, rect1, "Player 01", nameFont);
+			} else {
+				centerString(g, rect1, dialogStart.sPlayer1, nameFont); // Player01
+																		// name
+			}
+			if (dialogStart.sPlayer2.isEmpty()) {
+				centerString(g, rect2, "Player 02", nameFont);
+			} else {
+				centerString(g, rect2, dialogStart.sPlayer2, nameFont); // Player02
+																		// name
+			}
+
+			// DRAW THE WINNER
 			g.setColor(Color.BLACK);
 			// g.drawRect(95, 180, 320, 100);
 			// g.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
 			if (playerOneScore > playerTwoScore) {
-				centerString(g, rectWinner, dialogStart.sPlayer1 + " win!", winFont);
+				// centerString(g, rectWinner, dialogStart.sPlayer1 + " win!",
+				// winFont);
+				if (dialogStart.sPlayer1.isEmpty()) {
+					centerString(g, rectWinner, "Player 01 win!", winFont);
+				} else {
+					centerString(g, rectWinner, dialogStart.sPlayer1 + " win!", winFont); // Player01
+																							// win
+
+				}
 			} else {
-				centerString(g, rectWinner, dialogStart.sPlayer2 + " win!", winFont);
+				// centerString(g, rectWinner, dialogStart.sPlayer2 + " win!",
+				// winFont);
+				if (dialogStart.sPlayer2.isEmpty()) {
+					centerString(g, rectWinner, "Player 02 win!", winFont);
+				} else {
+					centerString(g, rectWinner, dialogStart.sPlayer2 + " win!", winFont); // Player02
+																							// win
+				}
 			}
 
 			// Draw Restart message
@@ -535,8 +569,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			showTitleScreen = true;
 			playerOneY = 250;
 			playerTwoY = 250;
-			ballX = 250;
-			ballY = 250;
+			ballX = 235;
+			ballY = 235;
 			playerOneScore = 0;
 			playerTwoScore = 0;
 			btnStart.setVisible(true);
