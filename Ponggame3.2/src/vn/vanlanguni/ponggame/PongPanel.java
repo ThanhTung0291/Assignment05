@@ -177,7 +177,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 					btnStart.setVisible(false);
 					showTitleScreen = false;
 					playing = true;
-					
+
 				}
 
 			}
@@ -416,7 +416,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			}else if (testBGNum == 6) {
 				backgroundscreen = new ImageIcon("hinh/BG06.jpg");
 			}
-				g.drawImage(backgroundscreen.getImage(), 0, 0, 500, 500, null);
+			g.drawImage(backgroundscreen.getImage(), 0, 0, 500, 500, null);
 			ponggame = new ImageIcon("hinh/Name.png.");
 			g.drawImage(ponggame.getImage(), 70, 50, 349, 81, null);
 			// Draw game title and start message
