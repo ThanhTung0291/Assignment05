@@ -24,7 +24,7 @@ public class MainGameUI extends JFrame{
 	private static final int _WIDTH = 500;
 	private PongPanel pongPanel;
 	public MainGameUI(){
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(_WIDTH, _HEIGHT));
 		setLayout(new BorderLayout());
 		setTitle("Pong Game - K21T Ltd.");
@@ -35,17 +35,7 @@ public class MainGameUI extends JFrame{
 		setLocationRelativeTo(null);
 		setVisible(true);
 		Sound.bgMusic.play();
-		this.addWindowListener(new WindowAdapter() {
-
-			@Override
-			public void windowClosing(WindowEvent arg0) {
-				int result = JOptionPane.showConfirmDialog(MainGameUI.this, "Are you sure to exit Pong Game?");
-				if(result == JOptionPane.YES_OPTION){
-					Sound.bgMusic.stop();
-					setVisible(false);
-				}				
-			}
-		});
+		
 	}
 
     public static void main(String[] args) {
