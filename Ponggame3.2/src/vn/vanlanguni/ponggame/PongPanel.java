@@ -242,6 +242,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 			// ball bounces off top and bottom of screen
 			if (nextBallTop < 0 || nextBallBottom > getHeight()) {
+				Sound.hitPaddle.play();
 				ballDeltaY *= -1;
 			}
 			if (ballDeltaY == 3) {
@@ -289,7 +290,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallLeft < playerOneRight) {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerOneBottom || nextBallBottom < playerOneTop) {
-
+					Sound.overPaddle.play();
 					playerTwoScore++;
 
 					// Player 2 Win, restart the game
@@ -303,6 +304,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				} else {
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
+					Sound.hitPaddle.play();
 					ballDeltaX *= -1;
 					lastHitBall = 1;
 				}
@@ -312,7 +314,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			if (nextBallRight > playerTwoLeft) {
 				// is it going to miss the paddle?
 				if (nextBallTop > playerTwoBottom || nextBallBottom < playerTwoTop) {
-
+					Sound.overPaddle.play();
 					playerOneScore++;
 
 					// Player 1 Win, restart the game
@@ -327,6 +329,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 					// If the ball hitting the paddle, it will bounce back
 					// FIXME Something wrong here
+					Sound.hitPaddle.play();
 					ballDeltaX *= -1;
 					lastHitBall = 2;
 				}
