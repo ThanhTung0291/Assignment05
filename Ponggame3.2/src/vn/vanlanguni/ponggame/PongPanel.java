@@ -95,6 +95,10 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private int ballDeltaX = -1;
 	private int ballDeltaY = 3;
 
+	// paddle image
+	private ImageIcon imgpaddle1 = new ImageIcon("hinh/paddle1.gif");
+	private ImageIcon imgpaddle2 = new ImageIcon("hinh/paddle2.gif");
+	
 	/** Ball Images */
 	ImageIcon imgBall01 = new ImageIcon("Ball/Ball001.png");
 	ImageIcon imgBall02 = new ImageIcon("Ball/Ball002.png");
@@ -585,8 +589,9 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			}
 
 			// draw the paddles
-			g.fillRect(playerOneX, playerOneY, playerOneWidth, playerOneHeight);
-			g.fillRect(playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight);
+			g.drawImage(imgpaddle1.getImage(), playerOneX, playerOneY, playerOneWidth, playerOneHeight, null);
+			g.drawImage(imgpaddle2.getImage(), playerTwoX, playerTwoY, playerTwoWidth, playerTwoHeight, null);
+			
 			// draw plus and minus
 			if (showRandomMinus) {
 				g.drawImage(imgMinus.getImage(), xRan, yRan, 30, 30, null);
