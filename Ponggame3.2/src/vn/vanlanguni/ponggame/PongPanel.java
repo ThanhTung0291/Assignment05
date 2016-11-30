@@ -163,6 +163,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Sound.bgMusic.stop();
 				btnStart.setVisible(false);
 				showTitleScreen = true;
 				dialogStart.setLocationRelativeTo(PongPanel.this);
@@ -293,6 +294,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 					// Player 2 Win, restart the game
 					if (playerTwoScore == 3) {
+						Sound.winPlayer.play();
 						playing = false;
 						gameOver = true;
 					}
@@ -315,6 +317,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
 					// Player 1 Win, restart the game
 					if (playerOneScore == 3) {
+						Sound.winPlayer.play();
 						playing = false;
 						gameOver = true;
 					}
@@ -607,6 +610,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 				spPressed = true;
 			}
 		} else if (gameOver && e.getKeyCode() == KeyEvent.VK_SPACE) {
+			Sound.winPlayer.stop();
+			Sound.bgMusic.play();
 			gameOver = false;
 			showTitleScreen = true;
 			playerOneY = 250;

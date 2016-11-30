@@ -1,4 +1,4 @@
-/*
+ /*
  * 
  * 
  * 
@@ -34,13 +34,14 @@ public class MainGameUI extends JFrame{
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		
+		Sound.bgMusic.play();
 		this.addWindowListener(new WindowAdapter() {
 
 			@Override
 			public void windowClosing(WindowEvent arg0) {
 				int result = JOptionPane.showConfirmDialog(MainGameUI.this, "Are you sure to exit Pong Game?");
 				if(result == JOptionPane.YES_OPTION){
+					Sound.bgMusic.stop();
 					setVisible(false);
 				}				
 			}
